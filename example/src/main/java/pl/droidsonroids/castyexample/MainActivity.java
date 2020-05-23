@@ -1,11 +1,14 @@
 package pl.droidsonroids.castyexample;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.MediaRouteButton;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.UiThread;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.mediarouter.app.MediaRouteButton;
+
 import pl.droidsonroids.casty.Casty;
 import pl.droidsonroids.casty.MediaData;
 
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpPlayButton() {
-        playButton = (Button) findViewById(R.id.button_play);
+        playButton = findViewById(R.id.button_play);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @UiThread
     private void setUpMediaRouteButton() {
-        MediaRouteButton mediaRouteButton = (MediaRouteButton) findViewById(R.id.media_route_button);
+        MediaRouteButton mediaRouteButton = findViewById(R.id.media_route_button);
         casty.setUpMediaRouteButton(mediaRouteButton);
     }
 

@@ -1,8 +1,10 @@
 package pl.droidsonroids.casty;
 
-import android.support.annotation.MainThread;
-import android.support.annotation.NonNull;
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.cast.MediaInfo;
+import com.google.android.gms.cast.MediaLoadOptions;
 import com.google.android.gms.cast.framework.media.RemoteMediaClient;
 
 public class CastyPlayer {
@@ -113,8 +115,8 @@ public class CastyPlayer {
      * Tries to load the media file and play it in the {@link ExpandedControlsActivity}
      *
      * @param mediaInfo Information about the media
-     * @param autoPlay True if the media file should start automatically
-     * @param position Start position of video in milliseconds
+     * @param autoPlay  True if the media file should start automatically
+     * @param position  Start position of video in milliseconds
      * @return true if attempt was successful, false otherwise
      * @see MediaInfo
      */
@@ -151,8 +153,8 @@ public class CastyPlayer {
      * Tries to load the media file and play in background
      *
      * @param mediaInfo Information about the media
-     * @param autoPlay True if the media file should start automatically
-     * @param position Start position of video in milliseconds
+     * @param autoPlay  True if the media file should start automatically
+     * @param position  Start position of video in milliseconds
      * @return true if attempt was successful, false otherwise
      * @see MediaInfo
      */
@@ -166,18 +168,21 @@ public class CastyPlayer {
             return false;
         }
         if (!inBackground) {
-            remoteMediaClient.addListener(createRemoteMediaClientListener());
+            remoteMediaClient.registerCallback(createRemoteMediaClientListener());
         }
-        remoteMediaClient.load(mediaInfo, autoPlay, position);
+        remoteMediaClient.load(mediaInfo, new MediaLoadOptions.Builder()
+                .setAutoplay(autoPlay)
+                .setPlayPosition(position)
+                .build());
         return true;
     }
 
-    private RemoteMediaClient.Listener createRemoteMediaClientListener() {
-        return new RemoteMediaClient.Listener() {
+    private RemoteMediaClient.Callback createRemoteMediaClientListener() {
+        return new RemoteMediaClient.Callback() {
             @Override
             public void onStatusUpdated() {
                 onMediaLoadedListener.onMediaLoaded();
-                remoteMediaClient.removeListener(this);
+                remoteMediaClient.unregisterCallback(this);
             }
 
             @Override

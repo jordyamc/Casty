@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
-import android.support.v7.app.MediaRouteButton;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import androidx.mediarouter.app.MediaRouteButton;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -151,7 +151,7 @@ public class Casty implements CastyPlayer.OnMediaLoadedListener {
      */
     @UiThread
     public void addMiniController() {
-        ViewGroup contentView = (ViewGroup) activity.findViewById(android.R.id.content);
+        ViewGroup contentView = activity.findViewById(android.R.id.content);
         View rootView = contentView.getChildAt(0);
         LinearLayout linearLayout = new LinearLayout(activity);
         LinearLayout.LayoutParams linearLayoutParams =

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Casty</string>
+    <string name="casty_introduction_text">Usa este botón para conectarte con Chromecast</string>
+</resources>
