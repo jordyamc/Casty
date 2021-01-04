@@ -10,16 +10,16 @@ ext {
 
     PUBLISH_GROUP_ID = 'pl.droidsonroids'
     PUBLISH_ARTIFACT_ID = 'casty'
-    PUBLISH_VERSION = '1.0.8'
+    PUBLISH_VERSION = '1.0.11'
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 7
+        targetSdkVersion 30
+        versionCode 8
         versionName PUBLISH_VERSION
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -32,8 +32,8 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.mediarouter:mediarouter:1.1.0'
-    implementation 'com.google.android.gms:play-services-cast-framework:18.1.0'
+    implementation 'androidx.mediarouter:mediarouter:1.2.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:19.0.0'
 }

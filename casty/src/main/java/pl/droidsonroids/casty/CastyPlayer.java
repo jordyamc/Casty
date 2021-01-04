@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.cast.MediaInfo;
 import com.google.android.gms.cast.MediaLoadOptions;
+import com.google.android.gms.cast.MediaSeekOptions;
 import com.google.android.gms.cast.framework.media.RemoteMediaClient;
 
 public class CastyPlayer {
@@ -44,7 +45,8 @@ public class CastyPlayer {
      * @param time the number of milliseconds to seek by
      */
     public void seek(long time) {
-        if (remoteMediaClient != null) remoteMediaClient.seek(time);
+        if (remoteMediaClient != null)
+            remoteMediaClient.seek(new MediaSeekOptions.Builder().setPosition(time).build());
     }
 
     /**
